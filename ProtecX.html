@@ -1,0 +1,563 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProtecXX | Smart Emergency & Safety</title>
+
+<style>
+:root {
+  --bg: #0b1220;
+  --card: #142238;
+  --red: #ef3347;
+  --white: #ffffff;
+  --muted: #a6b6ca;
+  --green: #2bc48a;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--white);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 7%;
+  border-bottom: 1px solid #26364d;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: white;
+}
+
+.logo span {
+  color: var(--red);
+}
+
+header small {
+  color: var(--muted);
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 35px 20px;
+}
+
+.welcome {
+  margin-bottom: 30px;
+}
+
+.welcome h1 {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.welcome p {
+  color: var(--muted);
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 22px;
+}
+
+.card {
+  background: var(--card);
+  padding: 25px;
+  border-radius: 18px;
+  border: 1px solid #293d58;
+}
+
+.sos-card {
+  text-align: center;
+  padding: 35px 20px;
+}
+
+.sos-card h2 {
+  margin-bottom: 10px;
+}
+
+.sos-card p {
+  color: var(--muted);
+  margin-bottom: 25px;
+}
+
+.sos-button {
+  width: 165px;
+  height: 165px;
+  border-radius: 50%;
+  border: 8px solid #ffffff25;
+  background: linear-gradient(145deg, #ff5969, #d91431);
+  color: white;
+  font-size: 36px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 35px #ef334755;
+  transition: .3s;
+}
+
+.sos-button:hover {
+  transform: scale(1.07);
+}
+
+.sos-card small {
+  display: block;
+  margin-top: 20px;
+  color: #f3a5ae;
+}
+
+.section-title {
+  font-size: 19px;
+  margin-bottom: 20px;
+}
+
+.location {
+  margin-top: 22px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.primary {
+  background: var(--red);
+  color: white;
+  border: none;
+  border-radius: 9px;
+  padding: 12px 18px;
+  font-weight: bold;
+}
+
+.secondary {
+  background: #263c59;
+  color: white;
+  border: none;
+  border-radius: 9px;
+  padding: 12px 18px;
+}
+
+.service-list {
+  display: grid;
+  gap: 13px;
+}
+
+.service {
+  background: #1c3049;
+  padding: 16px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.service button {
+  background: #304967;
+  border: none;
+  padding: 9px 12px;
+  color: white;
+  border-radius: 8px;
+}
+
+.contact-form {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+input {
+  background: #0b1728;
+  color: white;
+  border: 1px solid #334b67;
+  border-radius: 8px;
+  padding: 12px;
+  width: 100%;
+}
+
+.contact-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #33465e;
+}
+
+.grid-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-top: 22px;
+}
+
+.status {
+  color: var(--green);
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+#coordinates {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 12px 0;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  padding: 30px;
+  font-size: 12px;
+}
+
+#message {
+  margin-top: 15px;
+  color: #ffb6bf;
+}
+
+@media(max-width:750px) {
+  .dashboard,
+  .grid-bottom {
+    grid-template-columns: 1fr;
+  }
+
+  header {
+    padding: 18px;
+  }
+
+  .welcome h1 {
+    font-size: 24px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div>
+    <div class="logo">?? Protec<span>XX</span></div>
+    <small>SMART EMERGENCY & SAFETY SYSTEM</small>
+  </div>
+  <div class="status">? SYSTEM READY</div>
+</header>
+
+<main class="container">
+
+  <section class="welcome">
+    <h1>Welcome to ProtecXX</h1>
+    <p>Your personal smart emergency and safety assistant.</p>
+  </section>
+
+  <section class="dashboard">
+
+    <div>
+      <div class="card sos-card">
+        <h2>Are you in an emergency?</h2>
+        <p>Press the SOS button to activate emergency mode.</p>
+
+        <button class="sos-button" onclick="startSOS()">
+          SOS
+        </button>
+
+        <small>YOUR SAFETY IS OUR PRIORITY</small>
+        <div id="message"></div>
+      </div>
+
+      <div class="card location" style="margin-top:22px">
+        <h3 class="section-title">?? Your Live Location</h3>
+
+        <p id="coordinates">
+          Location has not been detected.
+        </p>
+
+        <button class="primary" onclick="getLocation()">
+          Detect My Location
+        </button>
+
+        <button class="secondary" onclick="shareLocation()">
+          Share Location
+        </button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 class="section-title">?? Emergency Services</h3>
+
+      <div class="service-list">
+
+        <div class="service">
+          <span>?? Hospitals</span>
+          <button onclick="findPlace('hospitals')">Find</button>
+        </div>
+
+        <div class="service">
+          <span>?? Police Stations</span>
+          <button onclick="findPlace('police stations')">Find</button>
+        </div>
+
+        <div class="service">
+          <span>?? Fire Stations</span>
+          <button onclick="findPlace('fire stations')">Find</button>
+        </div>
+
+        <div class="service">
+          <span>?? Ambulances</span>
+          <button onclick="findPlace('ambulance services')">Find</button>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <section class="grid-bottom">
+
+    <div class="card">
+      <h3 class="section-title">?? Emergency Contacts</h3>
+
+      <div id="contacts">
+        <p style="color:#a6b6ca">No contacts added.</p>
+      </div>
+
+      <form class="contact-form" onsubmit="addContact(event)">
+        <input id="name" placeholder="Contact name" required>
+        <input id="phone" type="tel" placeholder="Phone number" required>
+        <button class="primary" type="submit">Add Contact</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h3 class="section-title">?? Emergency Navigation</h3>
+
+      <p style="color:#a6b6ca;margin-bottom:20px">
+        Find emergency services and view routes using Google Maps.
+      </p>
+
+      <button class="primary" onclick="openMaps()">
+        Open Google Maps
+      </button>
+
+      <p style="margin-top:20px;color:#a6b6ca;font-size:13px">
+        Your location is used only after you grant permission.
+      </p>
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+  ProtecXX © 2026 | Smart Emergency & Safety App
+  <br><br>
+  Exhibition Prototype
+</footer>
+
+<script>
+
+let userLocation = null;
+
+let contacts = JSON.parse(
+  localStorage.getItem("protectxContacts") || "[]"
+);
+
+function startSOS() {
+
+  let confirmation = confirm(
+    "Are you sure you want to activate emergency mode?"
+  );
+
+  if (!confirmation) return;
+
+  if (!userLocation) {
+    alert("Please allow GPS access to detect your location.");
+    getLocation();
+    return;
+  }
+
+  let mapURL =
+    `https://www.google.com/maps?q=${userLocation.lat},${userLocation.lng}`;
+
+  document.getElementById("message").innerText =
+    "Emergency mode activated. Use your phone to contact help.";
+
+  window.open(mapURL, "_blank");
+
+  alert(
+    "Your location is ready to view. This prototype does not automatically send alerts."
+  );
+}
+
+function getLocation() {
+
+  if (!navigator.geolocation) {
+    alert("GPS is not supported by your browser.");
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(
+
+    function(position) {
+
+      userLocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      document.getElementById("coordinates").innerText =
+        "Latitude: " + userLocation.lat +
+        "\nLongitude: " + userLocation.lng;
+
+      alert("Your location has been detected!");
+
+    },
+
+    function() {
+      alert("Unable to access location. Please check GPS permission.");
+    }
+
+  );
+
+}
+
+function findPlace(place) {
+
+  let url =
+    "https://www.google.com/maps/search/" +
+    encodeURIComponent(place + " near me");
+
+  window.open(url, "_blank");
+
+}
+
+function openMaps() {
+
+  if (userLocation) {
+
+    window.open(
+      `https://www.google.com/maps/@${userLocation.lat},${userLocation.lng},15z`,
+      "_blank"
+    );
+
+  } else {
+
+    window.open(
+      "https://www.google.com/maps",
+      "_blank"
+    );
+
+  }
+
+}
+
+function shareLocation() {
+
+  if (!userLocation) {
+    alert("Please detect your location first.");
+    return;
+  }
+
+  let link =
+    `https://www.google.com/maps?q=${userLocation.lat},${userLocation.lng}`;
+
+  if (navigator.share) {
+
+    navigator.share({
+      title: "My Emergency Location",
+      text: "Here is my current location.",
+      url: link
+    });
+
+  } else if (navigator.clipboard) {
+
+    navigator.clipboard.writeText(link)
+      .then(() => alert("Location link copied!"));
+
+  } else {
+
+    alert(link);
+
+  }
+
+}
+
+function addContact(event) {
+
+  event.preventDefault();
+
+  let name = document.getElementById("name").value.trim();
+  let phone = document.getElementById("phone").value.trim();
+
+  contacts.push({name, phone});
+
+  localStorage.setItem(
+    "protectxContacts",
+    JSON.stringify(contacts)
+  );
+
+  renderContacts();
+
+  document.getElementById("name").value = "";
+  document.getElementById("phone").value = "";
+
+}
+
+function renderContacts() {
+
+  let container = document.getElementById("contacts");
+
+  if (contacts.length === 0) {
+    container.innerHTML =
+      '<p style="color:#a6b6ca">No contacts added.</p>';
+    return;
+  }
+
+  container.innerHTML = "";
+
+  contacts.forEach((contact, index) => {
+
+    let item = document.createElement("div");
+    item.className = "contact-item";
+
+    let details = document.createElement("span");
+    details.textContent = contact.name + " - " + contact.phone;
+
+    let remove = document.createElement("button");
+    remove.className = "secondary";
+    remove.textContent = "Remove";
+
+    remove.onclick = () => {
+      contacts.splice(index, 1);
+
+      localStorage.setItem(
+        "protectxContacts",
+        JSON.stringify(contacts)
+      );
+
+      renderContacts();
+    };
+
+    item.append(details, remove);
+    container.appendChild(item);
+
+  });
+
+}
+
+renderContacts();
+
+</script>
+
+</body>
+</html>
